@@ -13,8 +13,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "preinstall": "cd express && npm install",
-    "postinstall": "npm run build"
+    "preinstall": "cd express && npm install"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 /**** Routes ****/
 app.get('/api/hello', (req, res) => res.json({msg: "Hello from the API"}));
 
-/**** Reroute all unknown requests to react index.html ****/
+/**** Reroute all unknown requests to the React index.html ****/
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'));
 });

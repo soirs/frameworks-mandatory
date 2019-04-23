@@ -1,0 +1,47 @@
+/* document.css */
+
+@import url('https://use.typekit.net/ayf6gha.css');
+@import './variables.css';
+@import './normalize.css';
+@import '../../node_modules/uikit/dist/css/uikit.min.css';
+
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'fira-sans', 'Avenir', Helvetica, Arial, sans-serif;
+}
+/* 
+.gradient {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(65deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 20%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 40%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 1) 60%, rgba(255, 255, 255, 1) 60%, rgba(255, 255, 255, 1) 80%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 1) 100%);
+} */
+
+/* *, *:before, *:after {
+    box-sizing: border-box;
+  } */
+
+/* Responsive images */
+/* 
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    outline: 0;
+    cursor: pointer;
+} */
+
+.underline {
+  text-decoration: underline;
+  /* color: white; */
+}
+
+::selection {
+  /*http://stackoverflow.com/questions/8372334/css-selection-background-000000-color-ffffff-not-appearing-as-full-b*/
+  background: red;
+  color: var(--colorWhite);
+  opacity: 1;
+}

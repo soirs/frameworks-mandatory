@@ -1,60 +1,39 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import Routes from './Routes';
+
+import './css/document.css';
+import '../node_modules/uikit/dist/js/uikit.min';
 
 class App extends Component {
-    API_URL = process.env.REACT_APP_API_URL;
+  API_URL = process.env.REACT_APP_API_URL;
 
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            timer: 5,
-            data: "not loaded"
-        };
+    this.state = {};
 
-        this.handleCountdown = this.handleCountdown.bind(this);
-        this.getData = this.getData.bind(this);
-    }
+    // this.handleCountdown = this.handleCountdown.bind(this);
+    // this.getData = this.getData.bind(this);
+  }
 
-    componentDidMount() {
-        setTimeout(this.handleCountdown, 1000);
-    }
+  componentDidMount() {}
 
-    handleCountdown() {
-        if (this.state.timer > 0)
-        {
-            this.setState({
-                timer: this.state.timer - 1
-            });
-            setTimeout(this.handleCountdown, 1000);
-        } else {
-            this.getData();
-        }
-    }
+  getData() {
+    fetch(`${this.API_URL}/hello`)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          data: data.msg,
+        });
+      })
+      .catch(error => {
+        console.error('Error when fetching: ', error);
+      });
+  }
 
-    getData() {
-        fetch(`${this.API_URL}/hello`)
-            .then(response => response.json())
-            .then(data => {
-                this.setState({
-                    data: data.msg
-                });
-            })
-            .catch(error => {
-                console.error("Error when fetching: ", error);
-            })
-    }
-
-    render() {
-        return (
-            <div className="container">
-                <h1>FrankOverflow</h1>
-
-                <p>Countdown to API call: {this.state.timer}</p>
-
-                <p>Data: {this.state.data}</p>
-            </div>
-        );
-    }
+  render() {
+    return <Routes />;
+  }
 }
 
 export default App;

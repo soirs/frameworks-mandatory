@@ -1,1 +1,15 @@
-Sample project for the MERN stack, ready to deployed on Heroku.com using git. 
+# FrankOverflow | Frameworks assignment
+
+## Introduction
+
+> A StackOverflow-like approach made using the MERN stack and hosted on He
+
+## Code Samples
+
+> You've gotten their attention in the introduction, now show a few code examples. So they get a visualization and as a bonus, make them copy/paste friendly.
+
+## Installation
+
+> The installation instructions are low priority in the readme and should come at the bottom. The first part answers all their objections and now that they want to use it, show them how.
+
+## https://michaeldyrynda.github.io/readme-generator/

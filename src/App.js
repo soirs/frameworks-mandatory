@@ -47,7 +47,7 @@ class App extends Component {
     render() {
         return (
             <div className="container">
-                <h1>MERN Deployment Example</h1>
+                <h1>FrankOverflow</h1>
 
                 <p>Countdown to API call: {this.state.timer}</p>
 

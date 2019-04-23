@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
 /**** Configuration ****/
-const appName = "Foobar";
+const appName = "FrankOverflow API";
 const port = (process.env.PORT || 8080);
 const app = express();
 app.use(bodyParser.json()); // Parse JSON from the request body
@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 });
 
 /**** Routes ****/
-app.get('/api/hello', (req, res) => res.json({msg: "Hello from the API"}));
+app.get('/api/hello', (req, res) => res.json({msg: `Hello from the API ${appName}`}));
 
 /**** Reroute all unknown requests to the React index.html ****/
 app.get('/*', (req, res) => {

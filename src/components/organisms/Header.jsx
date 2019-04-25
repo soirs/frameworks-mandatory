@@ -22,6 +22,11 @@ const Header = () => {
           <HeaderLink to="Publish" icon="pencil">
             Publish a question
           </HeaderLink>
+          <hr className="uk-divider-small" />
+
+          <HeaderLink to="Voted" icon="chevron-up">
+            Highest voted
+          </HeaderLink>
         </ul>
       </div>
     </nav>

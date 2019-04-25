@@ -1,52 +1,57 @@
 import React, { Component } from 'react';
 import Fullpage from '../template/Fullpage';
-import Checkbox from '../atoms/Checkbox';
 
 class PublishForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      api: 'http://localhost:8080/api',
       author: '',
-      input: '',
-      isChecked: props.isChecked || false,
+      question: '',
     };
 
     this.onChangeAuthor = this.onChangeAuthor.bind(this);
     this.onChangeBody = this.onChangeBody.bind(this);
 
-    this.isChecked = this.isChecked.bind(this);
-
-    this.handleInput = this.handleInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   onChangeAuthor(event) {
-    this.setState({
-      author: event.target.value,
-    });
+    this.setState({ author: event.target.value });
   }
-
   onChangeBody(event) {
-    this.setState({
-      input: event.target.value,
-    });
+    this.setState({ question: event.target.value });
   }
+  PublishQuestion(author, question) {
+    let newQuestion = {
+      author: author,
+      question: question,
+    };
 
-  isChecked() {
-    this.setState({ isChecked: !this.state.isChecked });
+    console.log(newQuestion);
+
+    fetch(`${this.state.api}/questions/`, {
+      method: 'POST',
+      body: JSON.stringify(newQuestion),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then(response => response.json())
+      .catch(error => {
+        // TODO: Inform the user about the error
+        console.error('Error when adding question: ', error);
+      });
   }
-  // isChecked(event) {
-  //   this.setState({ isChecked: event.target.value,});
-  // }
 
   // SUBMIT
-  handleInput(event) {
+  handleSubmit(event) {
     event.preventDefault();
-    this.props.publishQuestion(this.state.author);
-    this.props.publishQuestion(this.state.input);
+    const { author, question } = this.state;
+    this.PublishQuestion(author, question);
   }
   render() {
-    const { author, input, isChecked } = this.state;
-
+    // const { author, question } = this.state;
     return (
       <div>
         <Fullpage>
@@ -57,50 +62,45 @@ class PublishForm extends Component {
             <form className="uk-form-stacked">
               {/* AUTHOR */}
               <div className="uk-margin">
-                <label className="uk-form-label" htmlFor="form-author">
+                <label className="uk-form-label" htmlFor="author">
                   Please enter your name
                 </label>
 
                 <div className="uk-form-controls">
                   <input
-                    required
+                    // required
                     className="uk-input"
-                    id="form-author"
+                    id="author"
                     type="text"
                     placeholder="Name"
                     onChange={this.onChangeAuthor}
+                    value={this.state.author}
                   />
                 </div>
+
                 <br />
 
                 {/* TEXTAREA */}
-                <label className="uk-form-label" htmlFor="form-body">
+                <label className="uk-form-label" htmlFor="question">
                   Please enter your question
                 </label>
 
                 <div className="uk-form-controls">
                   <textarea
-                    required
+                    // required
                     className="uk-textarea"
-                    id="form-body"
+                    id="question"
                     type="text-area"
                     placeholder="Enter your question"
                     onChange={this.onChangeBody}
+                    value={this.state.question}
                   />
                 </div>
               </div>
-              {/* BOT CHECK */}
-              <Checkbox isChecked />
-
-              <br />
-              <br />
-
               <button
-                onClick={this.handleInput}
-                className={`disabled uk-button uk-button-primary uk-align-right`}
-                disabled={!author || !input}
-                // disabled={!author || !input || !isChecked}
-                // disabled={!isChecked}
+                className={`uk-button uk-button-primary uk-align-right`}
+                onClick={this.handleSubmit}
+                // disabled={!author || !question}
               >
                 Submit
               </button>

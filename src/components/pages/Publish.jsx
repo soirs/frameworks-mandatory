@@ -11,28 +11,30 @@ class Publish extends Component {
       input: '',
     };
   }
-  publishQuestion(author, question) {
-    const timestamp = new Date().toLocaleTimeString();
 
-    let newQuestion = {
-      date: timestamp,
-      author: author,
-      question: question,
-      votes: 0,
-    };
+  // publishQuestion(author, question) {
+  //   const timestamp = new Date().toLocaleTimeString();
 
-    fetch(`${this.API_URL}/Questions/`, {
-      method: 'POST',
-      body: JSON.stringify(newQuestion),
-    })
-      .then(result => {
-        this.getData();
-      })
-      .catch(error => {
-        // TODO: Inform the user about the error
-        console.error('Error when adding question: ', error);
-      });
-  }
+  //   let newQuestion = {
+  //     _id: 0,
+  //     date: timestamp,
+  //     author: author,
+  //     question: question,
+  //     votes: 0,
+  //   };
+
+  //   fetch(`${this.API_URL}/Questions/`, {
+  //     method: 'POST',
+  //     body: JSON.stringify(newQuestion),
+  //   })
+  //     .then(result => {
+  //       this.getData();
+  //     })
+  //     .catch(error => {
+  //       // TODO: Inform the user about the error
+  //       console.error('Error when adding question: ', error);
+  //     });
+  // }
   render() {
     return (
       <div>

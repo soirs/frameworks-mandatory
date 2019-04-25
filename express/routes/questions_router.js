@@ -1,37 +1,45 @@
 module.exports = data => {
   let express = require('express');
   let router = express.Router();
-  let mongoose = require('mongoose');
+  // let mongoose = require('mongoose');
+  const timestamp = new Date().toLocaleTimeString();
+  const app = express();
 
-  const questionSchema = new mongoose.Schema({
-    order: Number,
-    title: String,
-    type: String,
-    required: Boolean,
-  });
+  let Questions = require('../models/questions');
 
   /****** Routes *****/
-  router.get('/', (req, res) => res.json(data));
+  app.get('/', (req, res) => res.json(data));
 
-  router.get('/:id', (req, res) => {
-    res.json(data.find(elm => elm.id === parseInt(req.params.id, 10)));
+  app.get('/api/questions', (req, res) => {
+    Questions.find({}, (err, questions) => res.json(questions));
   });
 
-  router.post('/', (req, res) => {
+  app.get('/api/questions/:id', (req, res) => {
+    res.json(Questions.find(elm => elm.id === parseInt(req.params.id, 10)));
+  });
+
+  app.post('/api/questions', (req, res) => {
     // Finding the next available id
-    const reducer = (acc, curr) => Math.max(acc, curr);
-    let nextId = data.map(el => el.id).reduce(reducer) + 1;
-
-    // Define the task object
-    let task = {
-      task: req.body.task, // Text of the task
-      done: req.body.done, // Whether it is done or not
-      id: nextId,
+    // const reducer = (acc, curr) => Math.max(acc, curr);
+    // let nextId = Questions.find(el => el.id).reduce(reducer) + 1;
+    let newQuestion = {
+      // _id: nextId,
+      // date: timestamp,
+      author: req.body.author,
+      question: req.body.question,
+      // votes: 0,
     };
-    data.push(task); // Put the new task in the data array
-
-    // Return a message and the new task object
-    res.json({ msg: 'Task created', task: task });
+    
+    newQuestion
+      .save()
+      .then(result => {
+        res.json({
+          msg: `Hey! ${req.body.author}, your question >> ${
+            req.body.question
+          } << has been posted`,
+        });
+      })
+      .catch(err => console.log(err));
   });
 
   // router.put('/:id', (req, res) => {

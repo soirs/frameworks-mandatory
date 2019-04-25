@@ -4,7 +4,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "nodemon app.js",
+    "update": "yarn add npm-check-updates --dev && ncu -u && yarn && yarn upgrade && yarn global upgrade && ncu -u && yarn outdated"
   },
   "author": "",
   "license": "ISC",

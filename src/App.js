@@ -11,7 +11,6 @@ class App extends Component {
 
     this.state = {};
 
-    // this.handleCountdown = this.handleCountdown.bind(this);
     // this.getData = this.getData.bind(this);
   }
 

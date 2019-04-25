@@ -1224,9 +1224,13 @@ acorn@^6.0.1, acorn@^6.0.4, acorn@^6.0.5, acorn@^6.0.7:
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.1.1.tgz#7d25ae05bb8ad1f9b699108e1094ecd7884adc1f"
 
-address@1.0.3, address@^1.0.1:
+address@1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/address/-/address-1.0.3.tgz#b5f50631f8d6cec8bd20c963963afb55e06cbce9"
+
+address@^1.0.1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/address/-/address-1.1.0.tgz#ef8e047847fcd2c5b6f50c16965f924fd99fe709"
 
 agent-base@^4.1.0:
   version "4.2.1"
@@ -1943,8 +1947,8 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000939, caniuse-lite@^1.0.30000955, caniuse-lite@^1.0.30000957, caniuse-lite@^1.0.30000960:
-  version "1.0.30000962"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000962.tgz#6c10c3ab304b89bea905e66adf98c0905088ee44"
+  version "1.0.30000963"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000963.tgz#5be481d5292f22aff5ee0db4a6c049b65b5798b1"
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -2199,10 +2203,10 @@ component-emitter@^1.2.1:
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.3.0.tgz#16e4070fba8ae29b679f2215853ee181ab2eabc0"
 
 compressible@~2.0.16:
-  version "2.0.16"
-  resolved "https://registry.yarnpkg.com/compressible/-/compressible-2.0.16.tgz#a49bf9858f3821b64ce1be0296afc7380466a77f"
+  version "2.0.17"
+  resolved "https://registry.yarnpkg.com/compressible/-/compressible-2.0.17.tgz#6e8c108a16ad58384a977f3a482ca20bff2f38c1"
   dependencies:
-    mime-db ">= 1.38.0 < 2"
+    mime-db ">= 1.40.0 < 2"
 
 compression@^1.5.2:
   version "1.7.4"
@@ -2936,8 +2940,8 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
 electron-to-chromium@^1.3.122, electron-to-chromium@^1.3.124:
-  version "1.3.125"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.125.tgz#dbde0e95e64ebe322db0eca764d951f885a5aff2"
+  version "1.3.126"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.126.tgz#39363f76e55cf2bc06cd919cb76c808b3acaed30"
 
 elliptic@^6.0.0:
   version "6.4.1"
@@ -5519,7 +5523,7 @@ miller-rabin@^4.0.0:
     bn.js "^4.0.0"
     brorand "^1.0.1"
 
-mime-db@1.40.0, "mime-db@>= 1.38.0 < 2":
+mime-db@1.40.0, "mime-db@>= 1.40.0 < 2":
   version "1.40.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.40.0.tgz#a65057e998db090f732a68f6c276d387d4126c32"
 
@@ -5690,8 +5694,8 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
 needle@^2.2.1:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/needle/-/needle-2.3.0.tgz#ce3fea21197267bacb310705a7bbe24f2a3a3492"
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/needle/-/needle-2.3.1.tgz#d272f2f4034afb9c4c9ab1379aabc17fc85c9388"
   dependencies:
     debug "^4.1.0"
     iconv-lite "^0.4.4"
@@ -5799,8 +5803,8 @@ node-pre-gyp@^0.12.0:
     tar "^4"
 
 node-releases@^1.1.13, node-releases@^1.1.14:
-  version "1.1.16"
-  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.16.tgz#efcb6615b0e8dc454bfb03bc025aad406ea6dddf"
+  version "1.1.17"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.17.tgz#71ea4631f0a97d5cd4f65f7d04ecf9072eac711a"
   dependencies:
     semver "^5.3.0"
 
@@ -6958,8 +6962,8 @@ prepend-http@^2.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
 
 pretty-bytes@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-5.1.0.tgz#6237ecfbdc6525beaef4de722cc60a58ae0e6c6d"
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-5.2.0.tgz#96c92c6e95a0b35059253fb33c03e260d40f5a1f"
 
 pretty-error@^2.1.1:
   version "2.1.1"
@@ -7606,9 +7610,15 @@ resolve@1.1.7:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.1.7.tgz#203114d82ad2c5ed9e8e0411b3932875e889e97b"
 
-resolve@1.10.0, resolve@^1.10.0, resolve@^1.3.2, resolve@^1.5.0, resolve@^1.8.1, resolve@^1.9.0:
+resolve@1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.10.0.tgz#3bdaaeaf45cc07f375656dfd2e54ed0810b101ba"
+  dependencies:
+    path-parse "^1.0.6"
+
+resolve@^1.10.0, resolve@^1.3.2, resolve@^1.5.0, resolve@^1.8.1, resolve@^1.9.0:
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.10.1.tgz#664842ac960795bbe758221cdccda61fb64b5f18"
   dependencies:
     path-parse "^1.0.6"
 
@@ -8520,15 +8530,15 @@ uglify-js@3.4.x:
     source-map "~0.6.1"
 
 uglify-js@^3.1.4:
-  version "3.5.6"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.5.6.tgz#8a5f8a06ee7415ac1fa302f4623bc7344b553da4"
+  version "3.5.7"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.5.7.tgz#1442fda9991a01aa0eb2853876640477109113ff"
   dependencies:
     commander "~2.20.0"
     source-map "~0.6.1"
 
 uikit@^3.1.3:
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.1.3.tgz#a002f380e0dbabf01de00bbf06f83143c75edf6f"
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.1.4.tgz#bb0939555c5038bd056ce3c2169715fb1103ce10"
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"

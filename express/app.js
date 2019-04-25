@@ -50,7 +50,7 @@ const db = mongoURI;
 // MongoDB changed some things which requires the "useNewUrlParser: true" added
 // https://mongoosejs.com/docs/deprecations.html
 mongoose
-  .connect(db, { dbName: 'questionnaire', useNewUrlParser: true })
+  .connect(db, { dbName: 'frankoverflow', useNewUrlParser: true })
   .then(() =>
     console.log(
       `${'\n'}🕒  ${timestamp} 🕒 ${'\n'}✅ ✅ ✅  WERE LIVE! MongoDB SUCCESSFULLY CONNECTED ${'\n'}`

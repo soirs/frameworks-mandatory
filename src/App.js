@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Routes from './Routes';
 
 import './css/document.css';
-import '../node_modules/uikit/dist/js/uikit.min';
 
 class App extends Component {
   API_URL = process.env.REACT_APP_API_URL;

@@ -7,10 +7,13 @@ class PublishForm extends Component {
     this.state = {
       api: 'http://localhost:8080/api',
       author: '',
+      title: '',
       question: '',
     };
 
     this.onChangeAuthor = this.onChangeAuthor.bind(this);
+
+    this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeBody = this.onChangeBody.bind(this);
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,18 +22,23 @@ class PublishForm extends Component {
   onChangeAuthor(event) {
     this.setState({ author: event.target.value });
   }
+  onChangeTitle(event) {
+    this.setState({ title: event.target.value });
+  }
   onChangeBody(event) {
     this.setState({ question: event.target.value });
   }
-  PublishQuestion(author, question) {
+
+  PublishQuestion(author, title, question) {
     let newQuestion = {
       author: author,
+      title: title,
       question: question,
     };
 
     console.log(newQuestion);
 
-    fetch(`${this.state.api}/questions/`, {
+    fetch(`${this.state.api}/questions`, {
       method: 'POST',
       body: JSON.stringify(newQuestion),
       headers: {
@@ -38,8 +46,8 @@ class PublishForm extends Component {
       },
     })
       .then(response => response.json())
+      .then(response => console.log(response))
       .catch(error => {
-        // TODO: Inform the user about the error
         console.error('Error when adding question: ', error);
       });
   }
@@ -47,9 +55,10 @@ class PublishForm extends Component {
   // SUBMIT
   handleSubmit(event) {
     event.preventDefault();
-    const { author, question } = this.state;
-    this.PublishQuestion(author, question);
+    const { author, title, question } = this.state;
+    this.PublishQuestion(author, title, question);
   }
+
   render() {
     // const { author, question } = this.state;
     return (
@@ -60,8 +69,8 @@ class PublishForm extends Component {
 
           <div>
             <form className="uk-form-stacked">
-              {/* AUTHOR */}
               <div className="uk-margin">
+                {/* AUTHOR */}
                 <label className="uk-form-label" htmlFor="author">
                   Please enter your name
                 </label>
@@ -77,9 +86,26 @@ class PublishForm extends Component {
                     value={this.state.author}
                   />
                 </div>
-
                 <br />
 
+                {/* AUTHOR */}
+                {/* TITLE */}
+                <label className="uk-form-label" htmlFor="title">
+                  Please enter a title for your question
+                </label>
+                <div className="uk-form-controls">
+                  <input
+                    // required
+                    className="uk-input"
+                    id="title"
+                    type="text"
+                    placeholder="Title"
+                    onChange={this.onChangeTitle}
+                    value={this.state.title}
+                  />
+                </div>
+
+                {/* TITLE */}
                 {/* TEXTAREA */}
                 <label className="uk-form-label" htmlFor="question">
                   Please enter your question

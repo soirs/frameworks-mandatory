@@ -5,7 +5,9 @@ import Frontpage from './components/pages/Frontpage';
 import Publish from './components/pages/Publish';
 import NotFoundPage from './components/pages/404';
 import Header from './components/organisms/Header';
-import Questions from './components/template/Questions';
+import Questions from './components/pages/Questions';
+import SingleQuestion from './components/pages/SingleQuestion';
+
 
 const Routes = props => {
   return (
@@ -17,11 +19,14 @@ const Routes = props => {
         {/* ROUTE Publish */}
         <Route exact path={'/Publish'} render={props => <Publish />} />
         {/* ROUTE Questions */}
-        <Route path={'/Questions/:id'} render={props => <Questions />} />
+        <Route exact path={'/Questions'} render={props => <Questions />} />
+        {/* ROUTE Questions by id */}
+        <Route path={'/Questions/:id'} render={props => <SingleQuestion {...props} /> } />
 
         {/* ROUTE 404 */}
         <Route component={NotFoundPage} />
       </Switch>
+
     </Router>
   );
 };

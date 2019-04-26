@@ -16,18 +16,18 @@ class App extends Component {
 
   componentDidMount() {}
 
-  getData() {
-    fetch(`${this.API_URL}/hello`)
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          data: data.msg,
-        });
-      })
-      .catch(error => {
-        console.error('Error when fetching: ', error);
-      });
-  }
+  // getData() {
+  //   fetch(`${this.API_URL}/hello`)
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       this.setState({
+  //         data: data.msg,
+  //       });
+  //     })
+  //     .catch(error => {
+  //       console.error('Error when fetching: ', error);
+  //     });
+  // }
 
   render() {
     return <Routes />;

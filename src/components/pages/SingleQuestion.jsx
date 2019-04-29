@@ -63,9 +63,8 @@ class SingleQuestion extends Component {
       <Fullpage>
         {this.state.questions.map(question => (
           <article className="uk-article" key={question._id}>
-            <h1 className="uk-text-lead">
+            <h1 className="uk-text-capitalize uk-text-lead">
               {question.title}{' '}
-              <span className="uk-badge">{question.votes || 63}</span>
             </h1>
             <p className="uk-article-meta ">
               Written by{' '}

@@ -60,7 +60,7 @@ class QuestionForm extends Component {
   }
 
   render() {
-    // const { author, question } = this.state;
+    const { author, question } = this.state;
     return (
       <div>
         <Fullpage>
@@ -126,7 +126,7 @@ class QuestionForm extends Component {
               <button
                 className={`uk-button uk-button-primary uk-align-right`}
                 onClick={this.handleSubmit}
-                // disabled={!author || !question}
+                disabled={!author || !question}
               >
                 Submit
               </button>

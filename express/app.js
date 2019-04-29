@@ -43,7 +43,6 @@ app.use((req, res, next) => {
 /****** DATA *****/
 
 // Establishes the connection to the database
-// const mongoURI = 'mongodb+srv://admin:admin@hoima-dsbni.mongodb.net/frankoverflow?retryWrites=true'; // change me
 const mongoURI = process.env.REACT_APP_MONGO_URI;
 
 let options = {
@@ -55,17 +54,6 @@ let options = {
 const timestamp = new Date().toLocaleTimeString('dk-Da', options);
 const db = mongoURI;
 
-// mongoose
-//   .connect(db, {
-//     dbName: process.env.REACT_APP_MONGO_DATABASE,
-//     useNewUrlParser: true,
-//   })
-//   .then(() =>
-//     console.log(
-//       `${'\n'}🕒  ${timestamp} 🕒 ${'\n'}✅ ✅ ✅  WERE LIVE! MongoDB SUCCESSFULLY CONNECTED ${'\n'}`
-//     )
-//   )
-//   .catch(err => console.error(`${'\n'}❌ ❌ ❌  CONNECTION ERROR: `, err));
 mongoose
   .connect(db, {
     dbName: 'frankoverflow',
@@ -133,21 +121,21 @@ app.put('/api/answers/:id', (req, res) => {
     .catch(err => console.log(err));
 });
 
-app.put('/api/answers:id', (req, res) => {
-  const { answer_id, votes, value } = req.body;
-  Answers.findOneAndUpdate(
-    { _id: answer_id },
-    { $set: { votes: votes + value } },
-    { returnUpdatedDocs: true },
-    (err, doc) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
-    }
-  )
-    .then(console.log(`Vote detected`))
-    .catch(err => console.log(err));
-});
+// app.put('/api/answers:id', (req, res) => {
+//   const { answer_id, votes, value } = req.body;
+//   Answers.findOneAndUpdate(
+//     { _id: answer_id },
+//     { $set: { votes: votes + value } },
+//     { returnUpdatedDocs: true },
+//     (err, doc) => {
+//       if (err) {
+//         return res.status(500).send(err);
+//       }
+//     }
+//   )
+//     .then(console.log(`Vote detected`))
+//     .catch(err => console.log(err));
+// });
 // POST
 // POST
 // POST

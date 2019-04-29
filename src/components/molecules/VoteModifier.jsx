@@ -7,6 +7,23 @@ class VoteModifier extends Component {
     this.state = {
       votes: this.props.votes,
     };
+
+    this.onDownvote = this.onDownvote.bind(this);
+    this.onUpvote = this.onUpvote.bind(this);
+
+  }
+  onDownvote(e) {
+    e.preventDefault();
+    this.VoteAction(-1);
+
+    // this.setState({ votes: event.target.value });
+  }
+  onUpvote(e) {
+    e.preventDefault();
+
+    this.VoteAction(1);
+
+    // this.setState({ votes: event.target.value });
   }
 
   VoteAction(value) {
@@ -28,24 +45,27 @@ class VoteModifier extends Component {
       .then(response => console.log(response))
       .then(vote => {
         console.log(`Before: ${this.props.votes}`);
-        console.log(`After: ${this.props.votes + value}`);
-        console.log(vote);
+        console.log(`Now: ${this.props.votes + value}`);
       });
   }
 
-  vote = e => {
+  vote = (e) =>{
     e.preventDefault();
     this.VoteAction(1);
   };
 
   render() {
     return (
-      <div>
-        <button onClick={this.vote} className="uk-button uk-button-text">
-          UPVOTE
+      <div className="uk-text-center">
+        <button onClick={this.onDownvote} value="-1" className="uk-button left uk-button-text">
+          DOWNVOTE
         </button>
         {'  '}
         <VoteCount>{this.props.votes}</VoteCount>
+        {'  '}
+        <button onClick={this.vote} className="uk-button uk-button-text">
+          UPVOTE
+        </button>
       </div>
     );
   }

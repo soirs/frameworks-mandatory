@@ -31,7 +31,7 @@ export default class AnswerForm extends Component {
     };
 
     console.log(newAnswer);
-    const URL = 'http://localhost:8080/api/answers';
+    const URL =  process.env.REACT_APP_API_ANSWERS;
     fetch(URL, {
       method: 'POST',
       body: JSON.stringify(newAnswer),
@@ -54,6 +54,8 @@ export default class AnswerForm extends Component {
   }
 
   render() {
+    const { author, answer } = this.state;
+
     return (
       <div>
         <Fullpage>
@@ -102,7 +104,7 @@ export default class AnswerForm extends Component {
               <button
                 className={`uk-button uk-button-primary uk-align-right`}
                 onClick={this.handleSubmit}
-                // disabled={!author || !answer}
+                disabled={!author || !answer}
               >
                 Submit
               </button>

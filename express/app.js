@@ -43,9 +43,8 @@ app.use((req, res, next) => {
 /****** DATA *****/
 
 // Establishes the connection to the database
-const mongoURI =
-  'mongodb+srv://admin:admin@hoima-dsbni.mongodb.net/frankoverflow?retryWrites=true'; // change me
-// const mongoURI = process.env.REACT_APP_MONGO;
+// const mongoURI = 'mongodb+srv://admin:admin@hoima-dsbni.mongodb.net/frankoverflow?retryWrites=true'; // change me
+const mongoURI = process.env.REACT_APP_MONGO;
 
 let options = {
   weekday: 'short',

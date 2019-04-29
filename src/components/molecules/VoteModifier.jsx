@@ -10,12 +10,15 @@ class VoteModifier extends Component {
   }
 
   VoteAction(value) {
+    const URL = 'http://localhost:8080';
+    
+
     let body = {
       answer_id: this.props.id,
       value: value,
       votes: this.props.votes + value,
     };
-    fetch(`http://localhost:8080/api/answers/${this.props.id}`, {
+    fetch(`/api/answers/${this.props.id}`, {
       method: 'PUT',
       body: JSON.stringify(body),
       headers: {

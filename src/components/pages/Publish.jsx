@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PublishForm from '../organisms/PublishForm';
+import QuestionForm from '../organisms/QuestionForm';
 
 class Publish extends Component {
   API_URL = process.env.REACT_APP_API_URL;
@@ -38,7 +38,7 @@ class Publish extends Component {
   render() {
     return (
       <div>
-        <PublishForm publishQuestion={this.publishQuestion} />
+        <QuestionForm publishQuestion={this.publishQuestion} />
       </div>
     );
   }

@@ -20,20 +20,24 @@ const Header = () => {
           </HeaderLink>
 
           <HeaderLink to="/Publish" icon="pencil">
-          {' '}
-          Publish a question
+            {' '}
+            Publish a question
           </HeaderLink>
+          {/**
           <hr className="uk-divider-small" />
+ */}
 
           <HeaderLink to="/Questions" icon="question">
             {' '}
             All Questions
           </HeaderLink>
-
+          {/**
           <HeaderLink to="/Voted" icon="chevron-up">
           {' '}
           Highest voted
           </HeaderLink>
+ * 
+ */}
         </ul>
       </div>
     </nav>

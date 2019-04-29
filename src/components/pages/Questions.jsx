@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Fullpage from '../template/Fullpage';
-import AllQuestions from './AllQuestions';
+import AllQuestions from '../organisms/AllQuestions';
 class Questions extends Component {
   constructor(props) {
     super(props);
@@ -26,14 +26,15 @@ class Questions extends Component {
         this.setState({ questions: data });
       })
       .catch(error => {
-        console.error('Error when adding question: ', error);
+        console.error('Error when fetching question: ', error);
       });
   }
 
   render() {
     return (
       <Fullpage>
-        <h1>Questions</h1>
+        <h1 className="uk-text-muted">Questions</h1>
+        <br />
         <AllQuestions questions={this.state.questions} />
       </Fullpage>
     );

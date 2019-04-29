@@ -84,49 +84,84 @@ let questionSchema = new mongoose.Schema({
   author: String,
   title: String,
   question: String,
-  // votes: Number,
+  votes: Number,
 });
-
 const Questions = mongoose.model('questions', questionSchema);
+
+let answerSchema = new mongoose.Schema({
+  replyTo: String,
+  date: String,
+  author: String,
+  answer: String,
+  votes: Number,
+});
+const Answers = mongoose.model('answers', answerSchema);
 
 /****** DATA *****/
 /**** ROUTES ****/
-
-app.get('/', (req, res) => res.json());
-
+// GET
+// GET
+// GET
+// GET
 app.get('/api/questions', (req, res) => {
   Questions.find({}, (err, questions) => res.json(questions));
 });
-
-// app.get('/api/questions/:id', (req, res) => {
-//   res.json(Questions.find(elm => elm.id === parseInt(req.params.id, 10)));
-// });
 app.get('/api/questions/:id', (req, res) => {
-  //res.json(data.filter(elm => elm.id === parseInt(req.params.id)));
-  //res.json({ msg: `You have sent this id: ${req.params.id}`});
   Questions.find({ _id: req.params.id }, (err, questions) => {
     res.json(questions);
   });
 });
 
+app.get('/api/answers', (req, res) => {
+  Answers.find({}, (err, answers) => res.json(answers));
+});
+app.get('/api/questions/:id', (req, res) => {
+  Answers.find({ _id: req.params.id }, (err, answers) => {
+    res.json(answers);
+  });
+});
+
+// PUT
+// PUT
+// PUT
+// PUT
+app.put('/api/answers/:id', (req, res) => {
+  Answers.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
+    .then(function(question) {
+      res.send(question);
+    })
+    .then(console.log(`Vote detected`))
+    .catch(err => console.log(err));
+});
+
+app.put('/api/answers:id', (req, res) => {
+  const { answer_id, votes, value } = req.body;
+  Answers.findOneAndUpdate(
+    { _id: answer_id },
+    { $set: { votes: votes + value } },
+    { returnUpdatedDocs: true },
+    (err, doc) => {
+      if (err) {
+        return res.status(500).send(err);
+      }
+    }
+  )
+    .then(console.log(`Vote detected`))
+    .catch(err => console.log(err));
+});
+// POST
+// POST
+// POST
+// POST
 app.post('/api/questions', (req, res) => {
-  // Finding the next available id
-  // const reducer = (acc, curr) => Math.max(acc, curr);
-  // let nextId = Questions.find(el => el.id).reduce(reducer) + 1;
-  Questions.deleteMany({});
   let newQuestion = new Questions({
     // _id: nextId,
     date: timestamp,
     title: req.body.title,
     author: req.body.author,
     question: req.body.question,
-    // votes: 0,
+    votes: 11,
   });
-
-  // if (!newQuestion.author || !newQuestion.question) {
-  //   return res.status(400).json({ msg: 'Question form incomplete' });
-  // }
-
   newQuestion
     .save()
     .then(result => {
@@ -139,9 +174,26 @@ app.post('/api/questions', (req, res) => {
     .catch(err => console.log(err));
 });
 
-// // Questions
-// let questionsRouter = require('./routes/questions_router')(data);
-// app.use('/api/questions', questionsRouter);
+app.post('/api/answers', (req, res) => {
+  let newAnswer = new Answers({
+    // _id: nextId,
+    replyTo: req.body.replyTo,
+    date: timestamp,
+    author: req.body.author,
+    answer: req.body.answer,
+    votes: 0,
+  });
+  newAnswer
+    .save()
+    .then(result => {
+      res.json({
+        msg: `Hey! __${req.body.author}__, your answer: >> ${
+          req.body.answer
+        } << has been posted`,
+      });
+    })
+    .catch(err => console.log(err));
+});
 
 /**** Reroute all unknown requests to the React index.html ****/
 app.get('/*', (req, res) => {

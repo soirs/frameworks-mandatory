@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import Fullpage from '../template/Fullpage';
 
-class PublishForm extends Component {
+export default class AnswerForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      api: 'http://localhost:8080/api',
       author: '',
-      title: '',
-      question: '',
+      answer: '',
     };
 
     this.onChangeAuthor = this.onChangeAuthor.bind(this);
-
-    this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeBody = this.onChangeBody.bind(this);
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,25 +18,23 @@ class PublishForm extends Component {
   onChangeAuthor(event) {
     this.setState({ author: event.target.value });
   }
-  onChangeTitle(event) {
-    this.setState({ title: event.target.value });
-  }
+
   onChangeBody(event) {
-    this.setState({ question: event.target.value });
+    this.setState({ answer: event.target.value });
   }
 
-  PublishQuestion(author, title, question) {
-    let newQuestion = {
+  PublishAnswer(author, answer) {
+    let newAnswer = {
+      replyTo: this.props.id,
       author: author,
-      title: title,
-      question: question,
+      answer: answer,
     };
 
-    console.log(newQuestion);
-
-    fetch(`${this.state.api}/questions`, {
+    console.log(newAnswer);
+    const URL = 'http://localhost:8080/api/answers';
+    fetch(URL, {
       method: 'POST',
-      body: JSON.stringify(newQuestion),
+      body: JSON.stringify(newAnswer),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -48,23 +42,22 @@ class PublishForm extends Component {
       .then(response => response.json())
       .then(response => console.log(response))
       .catch(error => {
-        console.error('Error when adding question: ', error);
+        console.error('Error when adding answer: ', error);
       });
   }
 
   // SUBMIT
   handleSubmit(event) {
     event.preventDefault();
-    const { author, title, question } = this.state;
-    this.PublishQuestion(author, title, question);
+    const { author, answer } = this.state;
+    this.PublishAnswer(author, answer);
   }
 
   render() {
-    // const { author, question } = this.state;
     return (
       <div>
         <Fullpage>
-          <h1>Publish</h1>
+          <h1>Reply</h1>
           <hr className="uk-divider-small" />
 
           <div>
@@ -89,44 +82,27 @@ class PublishForm extends Component {
                 <br />
 
                 {/* AUTHOR */}
-                {/* TITLE */}
-                <label className="uk-form-label" htmlFor="title">
-                  Please enter a title for your question
-                </label>
-                <div className="uk-form-controls">
-                  <input
-                    // required
-                    className="uk-input"
-                    id="title"
-                    type="text"
-                    placeholder="Title"
-                    onChange={this.onChangeTitle}
-                    value={this.state.title}
-                  />
-                </div>
-
-                {/* TITLE */}
                 {/* TEXTAREA */}
-                <label className="uk-form-label" htmlFor="question">
-                  Please enter your question
+                <label className="uk-form-label" htmlFor="answer">
+                  Please enter your answer
                 </label>
 
                 <div className="uk-form-controls">
                   <textarea
                     // required
                     className="uk-textarea"
-                    id="question"
+                    id="answer"
                     type="text-area"
-                    placeholder="Enter your question"
+                    placeholder="Enter your answer"
                     onChange={this.onChangeBody}
-                    value={this.state.question}
+                    value={this.state.answer}
                   />
                 </div>
               </div>
               <button
                 className={`uk-button uk-button-primary uk-align-right`}
                 onClick={this.handleSubmit}
-                // disabled={!author || !question}
+                // disabled={!author || !answer}
               >
                 Submit
               </button>
@@ -137,5 +113,3 @@ class PublishForm extends Component {
     );
   }
 }
-
-export default PublishForm;

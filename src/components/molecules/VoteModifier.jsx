@@ -60,9 +60,9 @@ class VoteModifier extends Component {
         <button onClick={this.onDownvote} value="-1" className="uk-button left uk-button-text">
           DOWNVOTE
         </button>
-        {'  '}
+        {' | '}
         <VoteCount>{this.props.votes}</VoteCount>
-        {'  '}
+        {' | '}
         <button onClick={this.vote} className="uk-button uk-button-text">
           UPVOTE
         </button>

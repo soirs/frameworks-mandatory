@@ -10,15 +10,14 @@ class VoteModifier extends Component {
   }
 
   VoteAction(value) {
-    const URL = 'http://localhost:8080';
-    
+    const URL = process.env.REACT_APP_API_ANSWERS;
 
     let body = {
       answer_id: this.props.id,
       value: value,
       votes: this.props.votes + value,
     };
-    fetch(`/api/answers/${this.props.id}`, {
+    fetch(`${URL}${this.props.id}`, {
       method: 'PUT',
       body: JSON.stringify(body),
       headers: {
@@ -47,7 +46,6 @@ class VoteModifier extends Component {
         </button>
         {'  '}
         <VoteCount>{this.props.votes}</VoteCount>
-
       </div>
     );
   }

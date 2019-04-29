@@ -37,7 +37,7 @@ class QuestionForm extends Component {
     };
 
     console.log(newQuestion);
-    const URL = 'http://localhost:8080/api/questions';
+    const URL =  process.env.REACT_APP_API_QUESTION;
     fetch(URL, {
       method: 'POST',
       body: JSON.stringify(newQuestion),

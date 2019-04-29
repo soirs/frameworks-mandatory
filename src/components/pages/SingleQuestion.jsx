@@ -18,7 +18,7 @@ class SingleQuestion extends Component {
   }
 
   getAnswers() {
-    const URL = 'http://localhost:8080/api/answers';
+    const URL = process.env.REACT_APP_API_ANSWERS;
     fetch(URL, {
       method: 'GET',
       headers: {
@@ -39,7 +39,7 @@ class SingleQuestion extends Component {
     //   (this.state.answers.replyTo === this.props.match.params.id).length
     // );
   }
-
+  // MULTIPLE
   getQuestion() {
     const QUESTION_ID = this.props.match.params.id;
     const URL = `http://localhost:8080/api/questions/${QUESTION_ID}`;

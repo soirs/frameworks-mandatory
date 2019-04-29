@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-
+require('dotenv').config()
 /**** Configuration ****/
 const appName = 'FrankOverflow API';
 const port = process.env.PORT || 8080;
@@ -44,7 +44,7 @@ app.use((req, res, next) => {
 
 // Establishes the connection to the database
 // const mongoURI = 'mongodb+srv://admin:admin@hoima-dsbni.mongodb.net/frankoverflow?retryWrites=true'; // change me
-const mongoURI = process.env.REACT_APP_MONGO;
+const mongoURI = process.env.REACT_APP_MONGO_URI;
 
 let options = {
   weekday: 'short',

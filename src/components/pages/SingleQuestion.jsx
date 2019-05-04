@@ -42,7 +42,7 @@ class SingleQuestion extends Component {
   // MULTIPLE
   getQuestion() {
     const QUESTION_ID = this.props.match.params.id;
-    const URL = `http://localhost:8080/api/questions/${QUESTION_ID}`;
+    const URL = `${process.env.REACT_APP_API_QUESTION}${QUESTION_ID}`;
     fetch(URL, {
       method: 'GET',
       headers: {

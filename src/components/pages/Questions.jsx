@@ -14,7 +14,7 @@ class Questions extends Component {
   }
 
   fetchQuestions() {
-    const URL = 'http://localhost:8080/api/questions';
+    const URL = process.env.REACT_APP_API_QUESTION;
     fetch(URL, {
       method: 'GET',
       headers: {

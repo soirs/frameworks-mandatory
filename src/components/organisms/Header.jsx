@@ -7,14 +7,15 @@ const Header = () => {
     <nav className="uk-navbar-container" uk-nav="true">
       <div className="uk-card uk-card-default uk-card-body">
         <ul
-          className="uk-nav-default uk-nav-center uk-nav-parent-icon" 
+          className="uk-nav-default uk-nav-center uk-nav-parent-icon"
           uk-nav="true"
         >
           <HeaderLink
             to="/"
             liClass="uk-nav-header"
-            linkClass={styles.headerTitle} >
-          {' '}
+            linkClass={styles.headerTitle}
+          >
+            {' '}
             <span className={styles.headerTitleFront}>Frank</span>
             <i>Overflow</i>
           </HeaderLink>
@@ -30,7 +31,6 @@ const Header = () => {
             All Questions
           </HeaderLink>
  */}
-
 
           {/**
           <HeaderLink to="/Voted" icon="chevron-up">

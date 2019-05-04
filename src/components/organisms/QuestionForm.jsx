@@ -5,7 +5,6 @@ class QuestionForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      api: 'http://localhost:8080/api',
       author: '',
       title: '',
       question: '',

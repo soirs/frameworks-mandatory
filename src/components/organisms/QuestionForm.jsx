@@ -46,6 +46,12 @@ class QuestionForm extends Component {
     })
       .then(response => response.json())
       .then(response => console.log(response))
+      .then(response => {
+        this.setState({ author: '' });
+        this.setState({ title: '' });
+        this.setState({ question: '' });
+        this.setState({ isPublished: true });
+      })
       .catch(error => {
         console.error('Error when adding question: ', error);
       });

@@ -9,6 +9,7 @@ class SingleQuestion extends Component {
     this.state = {
       questions: [],
       answers: [],
+      isPublished: false,
     };
   }
 
@@ -33,11 +34,6 @@ class SingleQuestion extends Component {
         console.error('Error when fetching answers: ', error);
       });
 
-    // console.log(this.state.answers.replyTo);
-    // console.log(this.props.match.params.id);
-    // console.log(
-    //   (this.state.answers.replyTo === this.props.match.params.id).length
-    // );
   }
   // MULTIPLE
   getQuestion() {
@@ -89,10 +85,12 @@ class SingleQuestion extends Component {
             <AllAnswers
               answers={this.state.answers}
               id={this.props.match.params.id}
+              isPublished={this.state.isPublished}
             />
             <AnswerForm
               question={this.state.questions}
               id={this.props.match.params.id}
+              isPublished={this.state.isPublished}
             />
           </article>
         ))}

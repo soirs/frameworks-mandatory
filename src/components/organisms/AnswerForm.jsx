@@ -31,7 +31,7 @@ export default class AnswerForm extends Component {
     };
 
     console.log(newAnswer);
-    const URL =  process.env.REACT_APP_API_ANSWERS;
+    const URL = process.env.REACT_APP_API_ANSWERS;
     fetch(URL, {
       method: 'POST',
       body: JSON.stringify(newAnswer),
@@ -41,6 +41,11 @@ export default class AnswerForm extends Component {
     })
       .then(response => response.json())
       .then(response => console.log(response))
+      .then(response => {
+        this.setState({ author: '' });
+        this.setState({ answer: '' });
+        this.setState({ isPublished: true });
+      })
       .catch(error => {
         console.error('Error when adding answer: ', error);
       });

@@ -6,6 +6,7 @@ class Questions extends Component {
     super(props);
     this.state = {
       questions: [],
+      isPublished: false,
     };
   }
 
@@ -35,7 +36,10 @@ class Questions extends Component {
       <Fullpage>
         <h1 className="uk-text-muted">Questions</h1>
         <br />
-        <AllQuestions questions={this.state.questions} />
+        <AllQuestions
+          questions={this.state.questions}
+          isPublished={this.state.isPublished}
+        />
       </Fullpage>
     );
   }
